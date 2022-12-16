@@ -26,11 +26,7 @@ import {
   MenuDivider
 } from "@chakra-ui/react";
 
-const details = [
-  { title: "Home", to: "/" },
-  { title: "SmartPhones", to: "/smartphones" },
-  { title: "Tv", to: "/tv" }
-];
+
 
 function Navbar() {
   const [display, setDisplay] = useState("-50%");
@@ -42,6 +38,8 @@ function Navbar() {
       pos="fixed"
       top="0px"
       w="100%"
+      zIndex='20'
+      // mt='100px'
     >
       {/* navbar in desktop view, all parts  except blue tabs */}
       <Flex className={Styles.navbar_box}>
@@ -98,7 +96,7 @@ function Navbar() {
 
       {/* search box in mobile view */}
       <Flex
-        w="50%"
+        w="100%"
         className={Styles.search_bar_box}
         display={["flex", "flex", "flex", "none"]}
         marginBottom="30px"

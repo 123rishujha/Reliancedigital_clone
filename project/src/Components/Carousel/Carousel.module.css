@@ -1,0 +1,48 @@
+.container {
+    /* width: 1200px; */
+    width: 100vw;
+    height: 40vh;
+    /* border: 1px solid red; */
+    /* position: relative; */
+  }
+  
+  .slider {
+    width: 400%;
+    /* border: 1px solid green; */
+    height: 100%;
+    display: flex;
+    /* position: absolute; */
+    /* left:-300%; */
+    transition: 0.3s left;
+  }
+  
+  .slide {
+    height: 100%;
+    width: 25%;
+    /* border: 1px solid black; */
+    object-fit: fill;
+    cursor: pointer;
+  }
+  
+  .left {
+    font-size: 30px;
+    position: absolute;
+    left: 0%;
+    top: 65%;
+    color: black;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+      rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  }
+  
+  .right {
+    font-size: 30px;
+    position: absolute;
+    right: 0%;
+    top: 65%;
+    color: black;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+      rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  }
+  
