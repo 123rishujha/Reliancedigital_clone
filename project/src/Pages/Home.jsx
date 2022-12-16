@@ -2,6 +2,7 @@ import Carousel from "../Components/Carousel/Carousel";
 import { Image } from "@chakra-ui/react";
 import { Link as NavLink } from "react-router-dom";
 
+//this is home page
 function Home() {
   return (
     <div style={{ marginTop: "120px" }}>
