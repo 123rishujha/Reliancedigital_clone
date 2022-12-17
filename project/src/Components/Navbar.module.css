@@ -1,5 +1,9 @@
 .navbar_box_red_background {
   background-color: #e42529;
+  width: 100%;
+  position:fixed;
+  padding: 0px 5px;
+  margin-left: -10px;
 }
 
 .navbar_box {
@@ -37,9 +41,9 @@
 .tabs {
   display: flex;
   justify-content: space-between;
-  font-size: 13px;
+  font-size: 12px;
   width: auto;
-  padding: 5px 0px;
+  padding: 5px 3px;
   position: relative;
 }
 

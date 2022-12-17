@@ -1,4 +1,11 @@
+*{
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
 .App {
   font-family: sans-serif;
   text-align: center;
+  padding: 10px;
 }
