@@ -1,78 +1,74 @@
 
-import { Link as NavLink } from "react-router-dom";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import { Link } from 'react-router-dom';
+import {Text,Badge} from '@chakra-ui/react';
 
 
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from "react-responsive-carousel";
+function ProductCarousel({data}){
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 4
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 3
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 2
+    }
+  };
 
-function CarouselBox() {
+  const handleLocal = (elem) =>{
+    localStorage.setItem('details',JSON.stringify(elem));
+  }
+
+  let x = Math.floor(Math.random()*10);
+    if(x > 3){
+    x = 1.5;
+  }else{
+    if(x<2){
+    x = 2;
+    }
+  }
+
+console.log(x);
+
   return (
-    <Carousel showThumbs={false} infiniteLoop autoPlay>
-      <div style={{ height: "250px" }}>
-        <img
-          style={{ height: "100%" }}
-          src="https://www.reliancedigital.in/medias/Moto-G42-Carousel-Banner-09-12-2022.jpg?context=bWFzdGVyfGltYWdlc3wxMDMyNDN8aW1hZ2UvanBlZ3xpbWFnZXMvaGQ2L2g2ZC85OTI5ODI3Mzg1Mzc0LmpwZ3w4MzEyODVmNTUyNWIwODNlNTA1YThjNTA4Njg5ZmU1YTU1ZjZlMzM5NWY5ODI0ZWNmOTAwYjY5M2RhNWVkOTky"
-          alt="slide_img1"
-        />
-        <NavLink to="/mobile">
-          <p
-            className="legend"
-            style={{ width: "100%", height: "100%", opacity: "0" }}
-          >
-            {/* <NavLink to='/laptop' style={{width:'100%'}} >more</NavLink> */}
-          </p>
-        </NavLink>
-      </div>
-
-      <div style={{ height: "250px" }}>
-        <img
-          style={{ height: "100%" }}
-          src="https://www.reliancedigital.in/medias/Entertainment-Fest-Carousel-Banner-08-D.jpg?context=bWFzdGVyfGltYWdlc3wyMDEwMzl8aW1hZ2UvanBlZ3xpbWFnZXMvaGQxL2g2MS85OTI5MTgxNjI2Mzk4LmpwZ3w2MjQzNGNlODRiMmRkZmE1ZDA1Njg3MTNmM2ExMWE5ZDQ4MDJhN2VkYTBmOWVjMjg1MTdhNTM3YmNhM2E3YjM0"
-          alt="slide_img1"
-        />
-        <NavLink to="/tv">
-          <p
-            className="legend"
-            style={{ width: "100%", height: "100%", opacity: "0" }}
-          >
-            {/* <NavLink to='/laptop' style={{width:'100%'}} >more</NavLink> */}
-          </p>
-        </NavLink>
-      </div>
-
-      <div style={{ height: "250px" }}>
-        <img
-          style={{ height: "100%" }}
-          src="https://www.reliancedigital.in/medias/Laptop-Carnival-Carousel-Banner-D.jpg?context=bWFzdGVyfGltYWdlc3w5MTcwNXxpbWFnZS9qcGVnfGltYWdlcy9oM2UvaDJiLzk5MzA5MTgwNjgyNTQuanBnfDM0NDIxMjI1ZmE2NjQ1MDk4MWY2MjJlMjU2Mjg0YzAxNDViYTRiM2YzMTEyYjU5OGUwNTZlNDY4NzcxYzk3M2Y"
-          alt="slide_img1"
-        />
-        <NavLink to="/laptop">
-          <p
-            className="legend"
-            style={{ width: "100%", height: "100%", opacity: "0" }}
-          >
-            {/* <NavLink to='/laptop' style={{width:'100%'}} >more</NavLink> */}
-          </p>
-        </NavLink>
-      </div>
-
-      <div style={{ height: "250px" }}>
-        <img
-          style={{ height: "100%" }}
-          src="https://www.reliancedigital.in/medias/Smartwatch-Carnival-Carousel-Banner-D.jpg?context=bWFzdGVyfGltYWdlc3w5MTMyMnxpbWFnZS9qcGVnfGltYWdlcy9oYmYvaGFmLzk5Mjk4MzI1NjI3MTguanBnfDBkOTJjZDk5YTI1MTU3NWU5MDc1NGQ0ZDg2YjFlOWRhOGRhN2FiMzgxMDY3YWI5Y2M1NDk0MjNjZjU1MzNjYjY"
-          alt="slide_img1"
-        />
-        <NavLink to="/smartwatch">
-          <p
-            className="legend"
-            style={{ width: "100%", height: "100%", opacity: "0" }}
-          >
-            {/* <NavLink to='/laptop' style={{width:'100%'}} >more</NavLink> */}
-          </p>
-        </NavLink>
-      </div>
-    </Carousel>
-  );
+    <div style={{zIndex:'1',position:'relative'}}>
+      <Carousel responsive={responsive} infinite >
+        {
+          data.map((elem)=>{
+            return (
+              <div key={elem.id} style={{height:'auto',padding:'10px',textAlign:'left'}}>
+                <Link to='/details'>
+                  <img onClick={()=>handleLocal(elem)} src={elem.image} alt={elem.id}  style={{height:'70%',width:'80%',margin:'auto'}} />
+                  <Text noOfLines='2' color='blue' >{elem.title}</Text>
+                  <Text >M.R.P:  
+                    <Text as='s'> ${Math.ceil(elem.price * x)}</Text>
+                  </Text>
+                  <Text >Deal Price:  
+                    <Text as='b'> ${elem.price}</Text>
+                  </Text>
+                  <Badge colorScheme='green'>Offer Available</Badge>
+                  {/* <Text>{elem.id}</Text> */}
+                </Link>
+              </div>
+            )
+          })
+        }
+      </Carousel>
+    </div>
+  )
 }
 
-export default CarouselBox;
+
+export default ProductCarousel;
+

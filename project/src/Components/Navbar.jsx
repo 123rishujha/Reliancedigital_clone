@@ -32,14 +32,15 @@ function Navbar() {
   const [display, setDisplay] = useState("-50%");
 
   return (
-    <Flex
+    <Flex width='100%' bgColor='red'>
+      <Flex
       direction="column"
       className={Styles.navbar_box_red_background}
       pos="fixed"
       top="0px"
-      w="100%"
+      width='100%'
       zIndex='20'
-      // mt='100px'
+      mb='-10px'
     >
       {/* navbar in desktop view, all parts  except blue tabs */}
       <Flex className={Styles.navbar_box}>
@@ -514,6 +515,8 @@ function Navbar() {
         </details>
       </Flex>
     </Flex>
+    </Flex>
+
   );
 }
 
