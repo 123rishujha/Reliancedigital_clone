@@ -47,6 +47,10 @@
   position: relative;
 }
 
+.tabs:hover{
+  background-color: red;
+}
+
 .tabs:hover .subtabs {
   display: flex;
   justify-content: space-between;
